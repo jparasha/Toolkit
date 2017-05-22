@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="">
+<head>				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">				
+</head>
+<script src = "js/prettifier.js" ></script>
+<link rel="stylesheet" href="CSS/pretty.css"/>
+<body>			
+	<div>
+		<h1 class="topHeader">DIY JSON PRETTIFIER</h1>	
+		<div>
+			<div align="left">
+				<strong class="biege">Click the button to get prettified JSON below</strong>
+				<input type="button" onclick="myFunction()" value="Get JSON"><br><br>
+				<strong class="biege">Try a Sample --> </strong>
+				<input type ="button" onclick="trySample()" value ="Try a Sample" Style="margin-bottom:1%;" > 
+				<strong class = "biege">or </strong>
+				<input type ="button" onclick="clearData()" value ="Clear All" Style="margin-bottom:1%;" > 
+			</div>
+			<div class="main">
+				<span class="firstHalf">
+					<textarea name="comment" cols="65" rows="25" id="this" placeholder="Paste your JSON here.." align="left"></textarea>
+				</span>
+				<span class="secondHalf">
+					<textarea id='pretty' cols="72" rows="25" readonly align="right"></textarea>		
+				</span>
+			</div>
+			<strong class="footer"> © <script>document.write(new Date().getFullYear())</script> Jayant Parashar/ MIT LICENSE</strong>
+		</div>
+	</div>		
+</body>
+</html>

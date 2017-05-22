@@ -1,0 +1,40 @@
+
+	body{
+		font-family:monospace;
+		border-top: 5px solid Grey;
+		margin-top:0px;
+		margin-left :0px;
+		margin-right:0px;
+	}
+	.biege{
+		font-size:120%;
+	}
+	.topHeader{
+		text-decoration: underline;
+		text-align:center;
+	}
+	.firstHalf, .secondHalf{
+		margin-left : 2%;
+		margin-right :1%;
+	}
+	.main{
+		border-top: 15px solid grey;
+		border-left: 15px solid grey;
+		border-bottom: 15px solid grey;
+		border-right: 15px solid grey;
+		padding: 1%;
+	}
+	#pretty {		
+	   font-family:monospace;
+	   font-size: 110%;
+	   font-weight: bold;
+	   
+	}
+	textarea{
+	    max-width:100%;
+		resize:vertical;
+		border:2px solid lightGrey;
+	}
+	.footer{
+		margin-left:2%;
+	}
