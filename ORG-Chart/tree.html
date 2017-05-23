@@ -1,0 +1,160 @@
+<html>  
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>	
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">  
+   <script type='text/javascript' src='https://www.google.com/jsapi'></script>  
+   <script type='text/javascript'>  
+    google.load('visualization', '1', {packages:['orgchart']});  
+    google.setOnLoadCallback(drawChart);
+	   var mydata =[
+				 ['server 1', ''],  
+				  ['client A.1', 'server 1'],  
+				  ['client B.1', 'server 1'],  
+				  ['client C.1', 'server 1'],  
+						['client A.1.1', 'client A.1'],  
+						['client A.1.2', 'client B.1'],  
+						['client A.1.3', 'client C.1'],  
+						['client A.1.4', 'client A.1'],  
+						['client A.1.5', 'client B.1'],
+						['client A.1.6', 'client C.1'],
+
+							['client A.1.1.1', 'client A.1.1'],
+
+
+				 ['server 2', ''],
+					['client D.2', 'server 2'],
+					['client E.2', 'server 2'],  
+					['client F.2', 'server 2'], 		  
+						[{v:'client B.1.1', f: 'client B.1.1<div id="click" onclick=addRow(); style="color:white; background:transparent; font-style:italic">This is client B.1.1</div>'}, 'client D.2'],  
+						['client B.1.2', 'client E.2'],  
+						['client B.1.3', 'client F.2'],  
+						['client B.1.4', 'client D.2'],  
+						['client B.1.5', 'client E.2'],
+						['client B.1.6', 'client F.2'],
+
+							['client B.1.6.1', 'client B.1.6']
+		   ];
+	   //mydata.push(value);
+		 /*,  
+      ['1.2.1', '1.2'],  
+      ['1.2.2', '1.2'],  
+      ['1.1.1.1', '1.1.1'],  
+      ['1.1.1.2', '1.1.1'],  
+      ['1.1.3.1', '1.1.3'],  
+      ['1.2.2.1', '1.2.2'],  
+      ['1.2.2.2', '1.2.2']  */
+     
+    function drawChart() {  
+     var data = new google.visualization.DataTable();  
+     data.addColumn('string', 'Node');  
+     data.addColumn('string', 'Parent');  
+     data.addRows(mydata);
+		//console.log(mydata);
+		
+		var numm= data.getNumberOfRows();
+		console.log(numm);
+		//for (var i=0; i< numm ; i++)
+			//{
+		 	///data.setRowProperty(i, 'style', 'color: red');
+				/*{
+		 		data.setRowProperty(i, 'style', 'border: 1px solid blue');
+				}*/
+			//}//
+		
+		
+		//can be added in a separate function
+     var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));  
+     chart.draw(data, {allowHtml:true , nodeClass:'view'}); //add class as nodeClass;""
+		
+		var cells = document.getElementsByTagName("td"); 
+		//for (var i = 0; i < cells.length; i++) { }//
+		   for(var i in cells) cells[i].onclick = addRow;	
+		
+		
+	/*var x = document.getElementsByClassName("view");
+		var att=document.createAttribute("onclick");
+		att.value = "=addRow();";
+		 x.setAttributeNode(att);*/
+    }  
+	   function addRow(){
+		   //console.log('From addRow---'+mydata);
+		   var addData= mydata;
+		   console.log(addData[6]);
+		   var x = document.getElementById("click");
+		   console.log(x);
+		   alert('called');
+		 //  var data = new google.visualization.DataTable();  
+			// data.addColumn('string', 'Node');  
+			// data.addColumn('string', 'Parent');  
+			// data.addRows(mydata);  
+			// var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));  
+			// chart.draw(data, {allowHtml:true});
+		 //  drawChart();
+		  // console.log(data);
+			//data.addRow();
+		}
+   </script>  
+  </head> 
+	<style>
+		body{
+			font-family: monospace;
+			margin:0px;
+			background-color: lightgray;
+			
+		}
+		.header{
+			padding:1%;
+			background-color:white;
+			margin-bottom: 5%;
+		}
+		.chart_div{
+			font-family: 'Roboto', sans-serif;
+		}
+		.view{
+			text-align: center;
+			vertical-align: middle;
+			cursor: default;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			color:whitesmoke;
+			-webkit-box-shadow:rgba(6, 12, 10, .5) 7px 9px 16px;
+			-moz-box-shadow: rgba(6, 12, 10, .5) 7px 9px 16px;
+			box-shadow: rgba(6, 12, 10, .5) 7px 9px 16px;
+			border: 2px solid #b5d9ea;
+			background-color: rgba(56, 137, 199, 1);
+			/*background: -webkit-gradient(linear, left top, left bottom, from(#d2784e), to(rgba(65, 97, 155, 0.98)));
+*/
+		}
+		.view.selected{	
+			    color: aliceblue;
+		}
+		.view:hover{
+			text-align: center;
+			vertical-align: middle;
+			cursor: default;
+			border: 2px solid #b5d9ea;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			-webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+			-moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+			background-color: rgb(82, 123, 173);
+			/*background: -webkit-gradient(linear, left top, left bottom, from(rgba(6, 82, 73, 0.81)), to(#c75c24));
+			*/
+		}
+		.google-visualization-orgchart-nodesel {
+		border: 2px solid #b5d9ea;
+		background-color: #b5d9ea !important;
+		/*background: -webkit-gradient(linear, left top, left bottom, from(#fff7ae), to(#eee79e));*/
+		}
+	</style>
+	
+  <body>
+   <div class="container col-lg-12 col-sm-12 col-md-12 col-xl-12"> 
+		<div class="header">
+			<h1 align="center">&lt; Sample ORG Chart &frasl; &gt;</h1>
+		</div>
+   		<div id='chart_div' class="chart_div"></div>  
+   </div>
+  </body>  
+ </html>  
